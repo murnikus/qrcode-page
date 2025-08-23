@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Language</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f54d32 0%, #d6371f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .logo-container {
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .logo-container::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #f54d32, #f8d9ab);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+    
+    .logo {
+      max-width: 220px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: scale(1.03);
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-weight: 600;
+      font-size: 28px;
+    }
+    
+    .language-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 25px;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #f8d9ab;
+      color: #333;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .btn i {
+      margin-right: 12px;
+      font-size: 20px;
+    }
+    
+    .btn.armenian {
+      background: #f8d9ab;
+    }
+    
+    .btn.russian {
+      background: #f8d9ab;
+    }
+    
+    .btn.english {
+      background: #f8d9ab;
+    }
+    
+    .language-name {
+      flex-grow: 1;
+      text-align: center;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      color: #777;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .btn {
+        padding: 14px 20px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <img src="./408463865_712388187510911_4334099579467618191_n.jpg" alt="Logo" class="logo">
+    </div>
+    
+    <h1>MENU</h1>
+    
+    <div class="language-buttons">
+      <button class="btn armenian" onclick="window.open('Menu arm.pdf', '_blank')">
+        <i class="fa-solid fa-language"></i>
+        <span class="language-name">Հայերեն</span>
+      </button>
+      
+      <button class="btn russian" onclick="window.open('rus.pdf', '_blank')">
+        <i class="fa-solid fa-language"></i>
+        <span class="language-name">Русский</span>
+      </button>
+      
+      <button class="btn english" onclick="window.open('eng.pdf', '_blank')">
+        <i class="fa-solid fa-language"></i>
+        <span class="language-name">English</span>
+      </button>
+    </div>
+    
+    <div class="footer">
+      <p>Select your preferred language to continue</p>
+    </div>
+  </div>
+
+  <script>
+    // Add animation to buttons when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach((btn, index) => {
+        btn.style.animation = `fadeIn 0.5s ease-out ${index * 0.1 + 0.5}s both`;
+      });
+    });
+  </script>
+</body>
+</html>
