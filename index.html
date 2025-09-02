@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Language</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
     * {
       margin: 0;
@@ -13,153 +14,220 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f54d32 0%, #d6371f 100%);
+      font-family: 'Inter', sans-serif;
+      background: white;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      color: #2D3748;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Decorative background elements */
+    body::before,
+    body::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    body::before {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, rgb(249, 218, 171) 0%, rgba(245,77,50,255) 100%);
+      top: -100px;
+      left: -100px;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.05);
+    }
+    
+    body::after {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgb(249, 218, 171) 0%, rgba(245,77,50,255) 100%);
+      bottom: -50px;
+      right: -50px;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.05);
     }
     
     .container {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      padding: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 
+        0 12px 32px rgba(0, 0, 0, 0.1),
+        inset 0 2px 6px rgba(255, 255, 255, 0.4);
+      padding: 48px 40px;
       width: 100%;
       max-width: 480px;
       text-align: center;
-      animation: fadeIn 0.6s ease-out;
+      position: relative;
+      z-index: 1;
+      transform: translateY(0);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 16px 40px rgba(0, 0, 0, 0.12),
+        inset 0 2px 6px rgba(255, 255, 255, 0.4);
     }
     
     .logo-container {
-      margin-bottom: 30px;
+      margin-bottom: 32px;
       position: relative;
     }
     
-    .logo-container::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, #f54d32, #f8d9ab);
-      margin: 15px auto;
-      border-radius: 2px;
-    }
-    
     .logo {
-      max-width: 220px;
+      max-width: 180px;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
     }
     
     .logo:hover {
       transform: scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
     }
     
     h1 {
-      color: #333;
-      margin-bottom: 30px;
+      color: #5A4D41;
+      margin-bottom: 36px;
       font-weight: 600;
-      font-size: 28px;
+      font-size: 32px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #f54d32, transparent);
+      border-radius: 2px;
     }
     
     .language-buttons {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
     
     .btn {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 16px 25px;
-      font-size: 18px;
-      font-weight: 600;
+      padding: 20px 28px;
+      font-size: 17px;
+      font-weight: 500;
       border: none;
-      border-radius: 12px;
+      border-radius: 18px;
       cursor: pointer;
-      background: #f8d9ab;
-      color: #333;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.75);
+      color: #4A5568;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
     }
     
     .btn::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: 0.5s;
-    }
-    
-    .btn:hover::before {
-      left: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%);
     }
     
     .btn:hover {
-      background: #ffffff;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .btn:hover::before {
+      animation: shimmer 0.8s;
     }
     
     .btn:active {
       transform: translateY(0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
     .btn i {
-      margin-right: 12px;
-      font-size: 20px;
+      margin-right: 18px;
+      font-size: 22px;
+      color: #8B7B6D;
+      transition: transform 0.3s ease;
     }
     
-    .btn.armenian {
-      background: #f8d9ab;
-    }
-    
-    .btn.russian {
-      background: #f8d9ab;
-    }
-    
-    .btn.english {
-      background: #f8d9ab;
+    .btn:hover i {
+      transform: scale(1.1);
+      color: #f54d32;
     }
     
     .language-name {
       flex-grow: 1;
-      text-align: center;
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .btn:hover .language-name {
+      transform: translateX(5px);
+    }
+    
+    .flag {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      margin-left: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .footer {
-      margin-top: 30px;
-      color: #777;
-      font-size: 14px;
+      margin-top: 36px;
+      color: #8B7B6D;
+      font-size: 15px;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
     }
     
+    /* Animation for the shimmer effect */
+    @keyframes shimmer {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    /* Responsive design */
     @media (max-width: 500px) {
       .container {
-        padding: 30px 20px;
+        padding: 36px 28px;
+        border-radius: 24px;
       }
       
       h1 {
-        font-size: 24px;
+        font-size: 26px;
       }
       
       .btn {
-        padding: 14px 20px;
+        padding: 18px 24px;
         font-size: 16px;
       }
     }
@@ -168,23 +236,23 @@
 <body>
   <div class="container">
     <div class="logo-container">
-      <img src="./408463865_712388187510911_4334099579467618191_n.jpg" alt="Logo" class="logo">
+      <img src="./IMG_9501.PNG" alt="Logo" class="logo">
     </div>
     
     <h1>MENU</h1>
     
     <div class="language-buttons">
-      <button class="btn armenian" onclick="window.open('Menu arm.pdf', '_blank')">
+      <button class="btn" onclick="window.open('Menu arm.pdf', '_blank')">
         <i class="fa-solid fa-language"></i>
         <span class="language-name">Հայերեն</span>
       </button>
       
-      <button class="btn russian" onclick="window.open('rus.pdf', '_blank')">
+      <button class="btn" onclick="window.open('Menu rus.pdf', '_blank')">
         <i class="fa-solid fa-language"></i>
         <span class="language-name">Русский</span>
       </button>
       
-      <button class="btn english" onclick="window.open('eng.pdf', '_blank')">
+      <button class="btn" onclick="window.open('Menu eng.pdf', '_blank')">
         <i class="fa-solid fa-language"></i>
         <span class="language-name">English</span>
       </button>
@@ -196,12 +264,27 @@
   </div>
 
   <script>
-    // Add animation to buttons when page loads
+    // Enhanced animations when page loads
     document.addEventListener('DOMContentLoaded', function() {
       const buttons = document.querySelectorAll('.btn');
       buttons.forEach((btn, index) => {
-        btn.style.animation = `fadeIn 0.5s ease-out ${index * 0.1 + 0.5}s both`;
+        setTimeout(() => {
+          btn.style.opacity = 1;
+          btn.style.transform = 'translateY(0)';
+        }, index * 150);
       });
+      
+      // Add subtle floating animation to container
+      const container = document.querySelector('.container');
+      setTimeout(() => {
+        container.style.transition = 'transform 3s ease-in-out';
+        setInterval(() => {
+          container.style.transform = 'translateY(-8px)';
+          setTimeout(() => {
+            container.style.transform = 'translateY(0)';
+          }, 1500);
+        }, 3000);
+      }, 1000);
     });
   </script>
 </body>
